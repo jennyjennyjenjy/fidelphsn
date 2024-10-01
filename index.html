@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fidelity Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            text-align: left;
+            padding-bottom: 20px;
+        }
+
+        .logo img {
+            width: 120px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-btn:hover {
+            background-color: #218838;
+        }
+
+        .forgot-password,
+        .signup-link {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .forgot-password a,
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover,
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: #007bff;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .feedback {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #e4f4e8;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #007b55;
+            writing-mode: vertical-lr;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://www.fidelity.com/favicon.ico" alt="Fidelity Logo">
+        </div>
+        <h2>Log in</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember my username</label>
+            </div>
+            <button type="submit" class="login-btn">Log in</button>
+            <div class="forgot-password">
+                <a href="#">Forgot username or password?</a>
+            </div>
+            <div id="error-message" class="error"></div>
+        </form>
+        <div class="signup-link">
+            New to Fidelity? <a href="#">Open an account or sign up.</a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Security</a>
+            <a href="#">FAQs</a>
+        </div>
+    </div>
+    <div class="feedback">Feedback</div>
+
+    <script>
+        // Function to save username to localStorage if "Remember my username" is checked
+        function saveUsername() {
+            const username = document.getElementById('username').value;
+            const remember = document.getElementById('remember').checked;
+
+            if (remember) {
+                localStorage.setItem('rememberedUsername', username);
+            } else {
+                localStorage.removeItem('rememberedUsername');
+            }
+        }
+
+        // Function to populate the username field if it was remembered
+        function loadRememberedUsername() {
+            const rememberedUsername = localStorage.getItem('rememberedUsername');
+            if (rememberedUsername) {
+                document.getElementById('username').value = rememberedUsername;
+                document.getElementById('remember').checked = true;
+            }
+        }
+
+        // Form validation
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (username === '' || password === '') {
+                errorMessage.textContent = 'Username and password are required.';
+                return false;
+            }
+
+            return true;
+        }
+
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Validate form
+            if (validateForm()) {
+                saveUsername(); // Save the username if remember is checked
+                alert('Form submitted successfully!'); // For now, just an alert for demo
+                // You can send form data to a backend here
+            }
+        });
+
+        // Load remembered username on page load
+        window.onload = function() {
+            loadRememberedUsername();
+        };
+    </script>
+</body>
+</html>
