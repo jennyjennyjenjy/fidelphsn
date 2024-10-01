@@ -147,7 +147,7 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Password">
-                <div id="error-message" class="error"></div> <!-- Error message moved here -->
+                <div id="error-message" class="error"></div> <!-- Error message block -->
             </div>
             <div class="form-group">
                 <input type="checkbox" id="remember" name="remember">
@@ -192,30 +192,22 @@
             }
         }
 
-        // Form validation
-        function validateForm() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        // Show error message on every login attempt
+        function showErrorMessage() {
             const errorMessage = document.getElementById('error-message');
-
-            if (username === '' || password === '') {
-                errorMessage.textContent = 'Username and password are required.';
-                return false;
-            }
-
-            return true;
+            errorMessage.textContent = 'Error code : 00X470089
+Contact Customer Care : +1-844-499-1812';
         }
 
         // Handle form submission
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Validate form
-            if (validateForm()) {
-                saveUsername(); // Save the username if remember is checked
-                alert('Code Error 0X00478394         Contact Customer Care : +1-844-499-1812!'); // For now, just an alert for demo
-                // You can send form data to a backend here
-            }
+            // Save the username if remember is checked
+            saveUsername();
+
+            // Show error message every time login is attempted
+            showErrorMessage();
         });
 
         // Load remembered username on page load
