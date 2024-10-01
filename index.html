@@ -34,6 +34,7 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
+            align-items: center;
         }
 
         .header-links a {
@@ -52,7 +53,8 @@
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            width: 90%; /* Full width for mobile */
+            max-width: 400px; /* Max width for desktop */
             text-align: center;
             margin-top: 60px; /* Adjust margin for header */
         }
@@ -133,6 +135,27 @@
             color: red;
             margin-top: 10px;
             font-size: 14px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 600px) {
+            header {
+                padding: 10px 15px;
+            }
+
+            .header-links a {
+                margin-left: 10px; /* Less spacing on mobile */
+                margin-right: 10px;
+            }
+
+            .container {
+                padding: 20px; /* Less padding on mobile */
+            }
+
+            .login-btn {
+                padding: 10px; /* Smaller button on mobile */
+                font-size: 14px; /* Smaller font on mobile */
+            }
         }
     </style>
 </head>
