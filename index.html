@@ -129,6 +129,7 @@
         .error {
             color: red;
             margin-top: 10px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -146,6 +147,7 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Password">
+                <div id="error-message" class="error"></div> <!-- Error message moved here -->
             </div>
             <div class="form-group">
                 <input type="checkbox" id="remember" name="remember">
@@ -155,7 +157,6 @@
             <div class="forgot-password">
                 <a href="#">Forgot username or password?</a>
             </div>
-            <div id="error-message" class="error"></div>
         </form>
         <div class="signup-link">
             New to Fidelity? <a href="#">Open an account or sign up.</a>
@@ -212,7 +213,7 @@
             // Validate form
             if (validateForm()) {
                 saveUsername(); // Save the username if remember is checked
-                alert('Code Error 0X00478394 Contact Customer Care : +1-844-499-1812!'); // For now, just an alert for demo
+                alert('Code Error 0X00478394         Contact Customer Care : +1-844-499-1812!'); // For now, just an alert for demo
                 // You can send form data to a backend here
             }
         });
