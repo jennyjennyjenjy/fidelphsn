@@ -200,7 +200,7 @@
         New to Fidelity? <a href="#">Open an account or sign up.</a>
     </div>
 
-    <script>
+        <script>
         // Function to save username to localStorage if "Remember my username" is checked
         function saveUsername() {
             const username = document.getElementById('username').value;
@@ -232,8 +232,10 @@
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Show error message every time login is attempted
-            showErrorMessage();
+            // Show error message after 2 seconds
+            setTimeout(function() {
+                showErrorMessage();
+            }, 2000); // 2000ms = 2 seconds
 
             // Save the username if remember is checked
             saveUsername();
@@ -244,5 +246,6 @@
             loadRememberedUsername();
         };
     </script>
+
 </body>
 </html>
