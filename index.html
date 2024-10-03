@@ -133,12 +133,13 @@
 
         .error {
             color: red;
-            margin-top: 10px;
+            margin-bottom: 10px;
             font-size: 14px;
             background-color: #f8d7da;
             padding: 10px;
             border: 1px solid #f5c6cb;
             border-radius: 5px;
+            text-align: left;
         }
 
         .error a {
@@ -192,6 +193,7 @@
     <div class="container">
         <h2>Log in</h2>
         <form id="loginForm">
+            <div id="error-message" class="error" style="display:none;"></div> <!-- Moved above username -->
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Username">
@@ -199,7 +201,6 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Password">
-                <div id="error-message" class="error" style="display:none;"></div>
             </div>
             <div class="form-group">
                 <input type="checkbox" id="remember" name="remember">
